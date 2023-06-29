@@ -69,4 +69,4 @@ The result will be a `.json` file containing the registered `Customers` in the d
 ---
 
 - :arrow_left: [Previous](04-seeding-the-database.md)
-- :arrow_right: [Next](/README.md)
+- :arrow_right: [Next](06-transforming-database-data-into-json)
