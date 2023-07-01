@@ -53,4 +53,4 @@ public function show(Customer $customer)
 ---
 
 - :arrow_left: [Previous](05-versioning-and-defining-routes.md)
-- :arrow_right: [Next](/README.md)
+- :arrow_right: [Next](07-filtering-data.md)
