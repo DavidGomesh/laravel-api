@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Filters\V1\CustomersFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\V1\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\V1\CustomerCollection;
 use App\Http\Resources\V1\CustomerResource;
@@ -22,7 +22,7 @@ class CustomerController extends Controller
         $includeInvoices = $request->query('includeInvoices');
 
         $customers = Customer::where($filterItems);
-        
+
         if($includeInvoices){
             $customers = $customers->with('invoices');
         }
@@ -31,19 +31,11 @@ class CustomerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        return new CustomerResource(Customer::create($request->all()));
     }
 
     /**
@@ -54,14 +46,6 @@ class CustomerController extends Controller
         $includeInvoices = request()->query('includeInvoices');
         $customer = $includeInvoices ? $customer->loadMissing('invoices') : $customer;
         return new CustomerResource($customer);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
-    {
-        //
     }
 
     /**
